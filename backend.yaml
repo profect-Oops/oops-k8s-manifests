@@ -20,7 +20,7 @@ spec:
         - name: ecr-secret
       containers:
         - name: backend
-          image: 941377153895.dkr.ecr.ap-northeast-2.amazonaws.com/oops/backend:latest
+          image: 941377153895.dkr.ecr.ap-northeast-2.amazonaws.com/oops/backend:28
           ports:
             - containerPort: 8080
           env:
