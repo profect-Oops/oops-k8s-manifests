@@ -21,7 +21,7 @@ spec:
         - name: airflow-webserver
           image: 941377153895.dkr.ecr.ap-northeast-2.amazonaws.com/oops/ai:latest
           imagePullPolicy: Always
-          command: ["airflow", "webserver"]
+          command: ["/entrypoint-webserver.sh"]
           args: ["--port", "8080"]
           ports:
             - containerPort: 8080
