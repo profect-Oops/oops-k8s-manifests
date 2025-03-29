@@ -4,7 +4,7 @@ metadata:
   name: airflow-scheduler
   namespace: ai
 spec:
-  replicas: 1  # 보통 1개만 실행 (필요하면 여러 개 가능)
+  replicas: 1 # 보통 1개만 실행 (필요하면 여러 개 가능)
   selector:
     matchLabels:
       app: airflow-scheduler
@@ -16,16 +16,16 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: worker-node-3
       imagePullSecrets:
-        - name: ai-ecr-secret  # ECR 로그인 Secret
+        - name: ai-ecr-secret # ECR 로그인 Secret
       containers:
         - name: airflow-scheduler
-          image: 941377153895.dkr.ecr.ap-northeast-2.amazonaws.com/oops/ai:latest
+          image: ""
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: ai-config  # ConfigMap 환경 변수 로드
+                name: ai-config # ConfigMap 환경 변수 로드
             - secretRef:
-                name: ai-secret  # Secret 환경 변수 로드
+                name: ai-secret # Secret 환경 변수 로드
           command: ["/bin/sh", "-c"]
           args:
             - |

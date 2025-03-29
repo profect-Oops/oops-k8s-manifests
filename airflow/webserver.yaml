@@ -19,7 +19,7 @@ spec:
         - name: ai-ecr-secret
       containers:
         - name: airflow-webserver
-          image: 941377153895.dkr.ecr.ap-northeast-2.amazonaws.com/oops/ai:latest
+          image: ""
           imagePullPolicy: Always
           command: ["airflow", "webserver"]
           args: ["--port", "8080"]
@@ -30,24 +30,23 @@ spec:
                 name: ai-config
             - secretRef:
                 name: ai-secret
-          # env:
-          #   - name: DB_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: ai-secret
-          #         key: DB_PASSWORD
-          #   - name: CRYPTOPANIC_API_KEY
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: ai-secret
-          #         key: CRYPTOPANIC_API_KEY
-          #   - name: OPENAI_API_KEY
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: ai-secret
-          #         key: OPENAI_API_KEY
+                # env:
+                #   - name: DB_PASSWORD
+                #     valueFrom:
+                #       secretKeyRef:
+                #         name: ai-secret
+                #         key: DB_PASSWORD
+                #   - name: CRYPTOPANIC_API_KEY
+                #     valueFrom:
+                #       secretKeyRef:
+                #         name: ai-secret
+                #         key: CRYPTOPANIC_API_KEY
+                #   - name: OPENAI_API_KEY
+                #     valueFrom:
+                #       secretKeyRef:
+                #         name: ai-secret
+                #         key: OPENAI_API_KEY
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -60,4 +59,8 @@ spec:
     - name: http
       port: 8080
       targetPort: 8080
-  type: ClusterIP  # 혹은 NodePort
+  type: ClusterIP # 혹은 NodePort
+  template:
+    spec:
+      containers:
+        - image: ""
