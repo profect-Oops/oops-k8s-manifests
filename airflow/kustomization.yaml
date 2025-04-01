@@ -5,4 +5,4 @@ resources:
   - scheduler.yaml
 images:
   - name: 941377153895.dkr.ecr.ap-northeast-2.amazonaws.com/oops/ai
-    newTag: "48"
+    newTag: "51"
